@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#10131C"
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="22dp"
+        android:paddingBottom="32dp">
+
+        <!-- HEADER -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="StringTune"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PRECISION CHROMATIC TUNER"
+                    android:textColor="#9299AA"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.13"
+                    android:layout_marginTop="4dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:paddingHorizontal="14dp"
+                android:text="440 Hz"
+                android:textColor="#42D69A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_string_default"/>
+
+        </LinearLayout>
+
+
+        <!-- MODE SELECTOR -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TUNING MODE"
+                android:textColor="#9299AA"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"/>
+
+            <TextView
+                android:id="@+id/tvTuningMode"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Standard E  ⌄"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:background="@drawable/bg_string_default"/>
+
+        </LinearLayout>
+
+
+        <!-- MAIN TUNER PANEL -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/bg_tuner_panel"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIVE PITCH DETECTION"
+                android:textColor="#9299AA"
+                android:textSize="11sp"
+                android:letterSpacing="0.12"
+                android:textStyle="bold"/>
+
+
+            <!-- FULL SEMICIRCULAR TUNING GAUGE -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_gauge_panel">
+
+                <com.app.stringtune.TuningGaugeView
+                    android:id="@+id/tuningGauge"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_gravity="top"
+                    android:padding="0dp"/>
+
+                <!-- GAUGE LABELS -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:paddingBottom="13dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="FLAT"
+                        android:textColor="#FF7777"
+                        android:textSize="11sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="IN TUNE"
+                        android:textColor="#42D69A"
+                        android:textSize="11sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="SHARP"
+                        android:textColor="#FF7777"
+                        android:textSize="11sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <!-- DETECTED NOTE -->
+
+            <TextView
+                android:id="@+id/tvDetectedNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E2"
+                android:textColor="#FFFFFF"
+                android:textSize="58sp"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:id="@+id/tvFrequency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="82.41 Hz"
+                android:textColor="#AAB2C5"
+                android:textSize="16sp"
+                android:layout_marginTop="2dp"/>
+
+
+            <!-- TUNING STATUS -->
+
+            <TextView
+                android:id="@+id/tvTuningStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:paddingHorizontal="22dp"
+                android:text="●  IN TUNE"
+                android:textColor="#42D69A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_string_selected"
+                android:layout_marginTop="14dp"/>
+
+
+            <!-- CENTS DISPLAY -->
+
+            <TextView
+                android:id="@+id/tvCents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 cents"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"/>
+
+        </LinearLayout>
+
+
+
+
+
+        <!-- FOOTER -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Play one string at a time for best accuracy"
+            android:textColor="#737E91"
+            android:textSize="11sp"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
